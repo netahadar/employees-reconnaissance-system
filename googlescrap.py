@@ -17,8 +17,8 @@ class ScrapeGoogle:
 		}
 
 
-	#makes the first search request:
-	def FirstRequest(self):
+	#gets the first search results page:
+	def SearchRequest(self):
 		res = requests.get(self.url, params=self.params, headers=self.headers)
 		return res.text
 
@@ -74,8 +74,8 @@ def main():
 	if "www." in domain:
 		domain=domain.split("www.")[1]
 	google= ScrapeGoogle(domain)
-	google.scraping_google(google.FirstRequest())
-	google.nextpage(google.FirstRequest())
+	google.scraping_google(google.SearchRequest())
+	google.nextpage(google.SearchRequest())
 
 
 main()
